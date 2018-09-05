@@ -21,5 +21,7 @@ Route::group(['namespace' =>'Api'], function () {
 
     Route::post('login', 'LoginController@login');
 
-    Route::any('wechat', 'WeChatController@serve');    //对应中间件过滤，一定要是any
+    Route::any('courseToCode', 'WeChatController@courseToCode');    //对应中间件过滤，一定要是any
+    Route::post('saoma', 'WeChatController@saoma');
+    Route::post('history', 'WeChatController@history');
 });
