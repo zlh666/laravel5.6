@@ -26,3 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', 'Admin\HomeController@index');
 });
+
+Route::get('fac','TestFactoryController@fac');
+Route::get('main','TestSingleController@main');
+Route::get('proto','PrototypePatternDemoController@main');
