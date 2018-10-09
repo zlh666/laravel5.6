@@ -56,4 +56,12 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
 
+    /**
+     * 校验用户名
+     */
+    public function username()
+    {
+        return 'name';
+    }
+
 }

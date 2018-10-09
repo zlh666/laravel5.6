@@ -1,71 +1,71 @@
-@extends('adminlayouts.app')
+@extends('adminlayouts.simple')
 
 @section('content')
+<body class="login-body">
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }} (admins)</div>
+    <form class="form-signin adminex-form" action="{{url('admin/login')}}" method="post">
+        {{ csrf_field() }}
+        <div class="form-signin-heading text-center">
+            <h1 class="sign-title">登录</h1>
+            <img src="{{asset('images/login-logo.png')}}" alt=""/>
+        </div>
+        <div class="login-wrap">
+            <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                <input type="text" name="name" class="form-control" placeholder="用户名" autofocus value="{{old('name')}}">
+                @if ($errors->has('name'))
+                    <span class="help-block small">{{ $errors->first('name') }}</span>
+                @endif
+            </div>
+            <div class="form-group {{$errors->has('password') ? 'has-error' : ''}}">
+                <input type="password" name="password" class="form-control" placeholder="密码" value="{{old('password')}}">
+                @if ($errors->has('password'))
+                    <span class="help-block small">{{ $errors->first('password') }}</span>
+                @endif
+            </div>
+            <button class="btn btn-lg btn-login btn-block" type="submit">
+                <i class="fa fa-check"></i>
+            </button>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ url('admin/login') }}" aria-label="{{ __('Login') }}">
-                        @csrf
+            {{--<div class="registration">--}}
+                {{--Not a member yet?--}}
+                {{--<a class="" href="registration.html">--}}
+                    {{--Signup--}}
+                {{--</a>--}}
+            {{--</div>--}}
+            <label class="checkbox">
+                <input type="checkbox" name="remember" {{ old('remember' ? 'checked' : '') }}> 记住我
+                <span class="pull-right">
+                    <a data-toggle="modal" href="#myModal"> 忘记密码?</a>
+                </span>
+            </label>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+        </div>
+    </form>
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <form action="">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">找回密码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>请输入邮箱来找回密码</p>
+                        <input type="text" name="mobile" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        <button class="btn btn-primary" type="button">提交</button>
+                    </div>
                 </div>
+                </form>
             </div>
         </div>
-    </div>
+        <!-- modal -->
 </div>
+</body>
+<!-- Placed js at the end of the document so the pages load faster -->
 @endsection
+
