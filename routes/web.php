@@ -27,6 +27,31 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'Admin\HomeController@index');
 });
 
-Route::get('fac','TestFactoryController@fac');
-Route::get('main','TestSingleController@main');
-Route::get('proto','PrototypePatternDemoController@main');
+Route::get('fac', 'TestFactoryController@fac');
+Route::get('main', 'TestSingleController@main');
+Route::get('proto', 'PrototypePatternDemoController@main');
+
+///////////////////
+class Baz
+{
+}
+
+class Bar
+{
+    public $baz;
+
+    public function __construct(Baz $baz)
+    {
+        $this->baz = $baz;
+    }
+}
+
+Route::get('bar', function (Bar $bar) {
+    dd($bar->baz);
+});
+
+Route::get('eat', function (App\Rice $rice) {
+//    dd(\App\RiceFacade::food());
+//    return Rice::food();
+        dd(rice()->food());
+});

@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-//    public function login(Request $request){
-//        return response()->json(['code'=>500,'msg'=>'success']);
-//    }
-    public function login(Request $request)
+    public function login(Request $request){
+        return response()->json(['code'=>500,'msg'=>'success']);
+    }
+    public function login1(Request $request)
     {
         $code = $request->input('code');
 

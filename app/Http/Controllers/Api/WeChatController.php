@@ -45,7 +45,7 @@ class WeChatController extends Controller
 
         $return = array(
             array('commonCourseTitle' => '政治强化班政治强化班政治强化班政治强化班政治强化班（张林豪）第3次课', 'commonCourseXq' => '上课时间：2018年8月8日 8:30 \n 签到时间：2018年8月8日 8:30 \n 学生签到人数：35人'),
-            array('commonCourseTitle' => '政治强化班（郝世慧）第3次课', 'commonCourseXq' => '上课时间：2018年8月8日 8:30 \n 签到时间：2018年8月8日 8:30 \n 学生签到人数：35人')
+            array('commonCourseTitle' => '政治强化班（让我热无）第3次课', 'commonCourseXq' => '上课时间：2018年8月8日 8:30 \n 签到时间：2018年8月8日 8:30 \n 学生签到人数：35人')
         );
 
         return \GuzzleHttp\json_encode($return);

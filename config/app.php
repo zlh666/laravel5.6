@@ -161,7 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Overtrue\LaravelWeChat\ServiceProvider::class,
-
+        App\Providers\RiceServiceProvider::class//吃饭服务测试
     ],
 
     /*
@@ -212,6 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'EasyWeChat' => Overtrue\LaravelWeChat\Facade::class,
+        'Rice' => \App\RiceFacade::class//吃饭门面别名
     ],
 
 ];
