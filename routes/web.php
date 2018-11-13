@@ -30,8 +30,24 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('fac', 'TestFactoryController@fac');
 Route::get('main', 'TestSingleController@main');
 Route::get('proto', 'PrototypePatternDemoController@main');
-
-///////////////////
+/*
+ * 数据操作3种方式
+ */
+Route::get('test','TestController@test');
+Route::get('logo','TestController@create_logo');
+Route::get('shop','TestController@create_shop');
+Route::get('card','TestController@create_card');
+Route::get('code','TestController@create_card_code');
+Route::get('token','TestController@update_access_token');
+Route::get('add','TestController@add_code_to_user');
+/*
+ * github login
+ */
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+/*
+ * 引入类三种方式测试
+ */
 class Baz
 {
 }
