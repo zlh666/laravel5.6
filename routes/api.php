@@ -13,15 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::group(['namespace' =>'Api'], function () {
+
+Route::group(['namespace' => 'Api'], function () {
 
     Route::post('login', 'LoginController@login');
 
     Route::any('courseToCode', 'WeChatController@courseToCode');    //对应中间件过滤，一定要是any
-    Route::post('saoma', 'WeChatController@saoma');
+    Route::middleware('auth:api')->post('saoma', 'WeChatController@saoma');
     Route::post('history', 'WeChatController@history');
+
 });
