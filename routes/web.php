@@ -102,3 +102,9 @@ Route::get('eat', function (App\Rice $rice) {
 //    return Rice::food();
         dd(rice()->food());
 });
+
+/*
+ * single
+ */
+Route::get('single','SingleController@test');
+
